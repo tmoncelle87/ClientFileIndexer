@@ -22,3 +22,28 @@ C:\REPOS\ClientFileIndexer\FolderFileIndexer\bin\Debug\net8.0\SixLabors.Fonts.dl
 C:\REPOS\ClientFileIndexer\FolderFileIndexer\bin\Debug\net8.0\System.IO.Packaging.dll
 C:\REPOS\ClientFileIndexer\FolderFileIndexer\obj\Debug\net8.0\FolderFileIndexer.csproj.AssemblyReference.cache
 C:\REPOS\ClientFileIndexer\FolderFileIndexer\obj\Debug\net8.0\FolderFi.9B3E5619.Up2Date
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\bin\Debug\net8.0\FolderFileIndexer.exe
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\bin\Debug\net8.0\FolderFileIndexer.deps.json
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\bin\Debug\net8.0\FolderFileIndexer.runtimeconfig.json
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\bin\Debug\net8.0\FolderFileIndexer.dll
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\bin\Debug\net8.0\FolderFileIndexer.pdb
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\bin\Debug\net8.0\ClosedXML.dll
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\bin\Debug\net8.0\ClosedXML.Parser.dll
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\bin\Debug\net8.0\DocumentFormat.OpenXml.dll
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\bin\Debug\net8.0\DocumentFormat.OpenXml.Framework.dll
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\bin\Debug\net8.0\ExcelNumberFormat.dll
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\bin\Debug\net8.0\RBush.dll
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\bin\Debug\net8.0\SixLabors.Fonts.dll
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\bin\Debug\net8.0\System.IO.Packaging.dll
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\obj\Debug\net8.0\FolderFileIndexer.csproj.AssemblyReference.cache
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\obj\Debug\net8.0\FolderFileIndexer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\obj\Debug\net8.0\FolderFileIndexer.AssemblyInfoInputs.cache
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\obj\Debug\net8.0\FolderFileIndexer.AssemblyInfo.cs
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\obj\Debug\net8.0\FolderFileIndexer.csproj.CoreCompileInputs.cache
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\obj\Debug\net8.0\FolderFileIndexer.sourcelink.json
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\obj\Debug\net8.0\FolderFi.9B3E5619.Up2Date
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\obj\Debug\net8.0\FolderFileIndexer.dll
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\obj\Debug\net8.0\refint\FolderFileIndexer.dll
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\obj\Debug\net8.0\FolderFileIndexer.pdb
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\obj\Debug\net8.0\FolderFileIndexer.genruntimeconfig.cache
+D:\Github Coding Repo\ClientFileIndexer\FolderFileIndexer\obj\Debug\net8.0\ref\FolderFileIndexer.dll

@@ -1,88 +1,118 @@
-﻿using System;              // Basic C# types (Console, etc.)
-using System.IO;           // File & directory access (Directory, Path, DirectoryInfo)
-using System.Linq;         // LINQ helpers (OrderBy)
-using ClosedXML.Excel;     // Excel (.xlsx) creation & formatting library
+﻿using ClosedXML.Excel;     
+//using DocumentFormat.OpenXml.Drawing.Charts;
+using System;               
+using System.IO;           
+using System.Linq;          
 
 namespace FolderFileIndexer
 {
     public class Program
     {
-
         public static void Main(string[] args)
         {
-            // Folder we want to scan for subfolders
-            string folderPath = @"C:\Users\tmonc\OneDrive - Minnesota State\Documents";
+            //The folder containing the files we want to index
+            //string folderPath = @"Copy Folder Address Here";
+            string folderPath = @"D:\Documents";
 
-            // Output Excel file path
-            string outputFile = @"C:\temp\folder_report.xlsx";
+            bool DeleteFileExtension = true;
 
-            // Ensure the output directory exists so SaveAs doesn't fail
+            if (!Directory.Exists(folderPath))
+            {
+                Console.WriteLine("Error The following directory does not exist: " + folderPath);
+                return;
+            }
+
+            //Paste the full path AND the desired file name (without the extension)
+            //string outputFile = @"\Path\To\Your\Folder\MyIndexName" + ".xlsx";
+            string outputFile = @"D:\Documents\MyIndexName" + ".xlsx";
+
+            // Ensure the output directory exists
             string? outputDir = Path.GetDirectoryName(outputFile);
             if (!string.IsNullOrEmpty(outputDir))
             {
                 Directory.CreateDirectory(outputDir);
             }
 
-            string[] dirs;
+            string[] files;
 
             try
             {
-                // Attempt to enumerate directories in the starting folder
-                dirs = Directory.GetDirectories(folderPath);
+                files = Directory.GetFiles(folderPath);
             }
             catch (UnauthorizedAccessException)
             {
-                Console.WriteLine("Access denied to starting folder.");
-                return; // Exit Main safely
+                Console.WriteLine("Access denied to the folder.");
+                return;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Failed to read starting folder: {ex.Message}");
+                Console.WriteLine($"Failed to read files: {ex.Message}");
                 return;
             }
 
+            //Sort files alphabetically by name
+            var orderedFiles = files.OrderBy(f => f, StringComparer.OrdinalIgnoreCase);
 
-            // Sort AFTER we successfully retrieved the directories
-            var orderedDirs = dirs.OrderBy(d => d, StringComparer.OrdinalIgnoreCase);
-
-
-            // Create a new Excel workbook in memory
             using (var workbook = new XLWorkbook())
             {
-                // Add a worksheet named "Folders"
-                var ws = workbook.Worksheets.Add("Folders");
+                //Name the sheet "Files"
+                var ws = workbook.Worksheets.Add("Indexed Files");
 
-                // Write column headers
+                //Headers
                 ws.Cell(1, 1).Value = "Index";
-                ws.Cell(1, 2).Value = "Folder Name";
+                ws.Cell(1, 2).Value = "File Name";
+                ws.ShowGridLines = false;
 
-                // Format header row to be bold
-                ws.Range(1, 1, 1, 2).Style.Font.Bold = true;
+                //Styles the Header Row a blue color
+                var headerRange = ws.Range(1, 1, 1, 2);
+                headerRange.Style.Font.Bold = true;
+                headerRange.Style.Fill.BackgroundColor = XLColor.LightBlue;
 
-                int row = 2;     // Start writing data on row 2 (row 1 = headers)
-                int count = 1;   // Running index counter
+                int row = 2;
+                int count = 1;
 
-                // Loop through each directory path
-                foreach (string dir in orderedDirs)
-
+                foreach (string filePath in orderedFiles)
                 {
-                    // Column 1: numeric index
                     ws.Cell(row, 1).Value = count++;
-
-                    // Column 2: folder name only (not full path)
-                    ws.Cell(row, 2).Value = new DirectoryInfo(dir).Name;
-
-                    row++; // Move to the next row
+                    if (DeleteFileExtension == false)
+                    {
+                        ws.Cell(row, 2).Value = Path.GetFileName(filePath);
+                    }
+                    else if(DeleteFileExtension == true)
+                    {
+                        ws.Cell(row, 2).Value = Path.GetFileNameWithoutExtension(filePath);
+                    }
+                   
+                    row++;
                 }
 
-                // Resize columns automatically based on content width
-                ws.Columns().AdjustToContents();
+                //Styles the Data Rows a light blue color
+                var dataRange = ws.Range(2, 1, row - 1, 2);
+                dataRange.Style.Fill.BackgroundColor = XLColor.AliceBlue;
 
-                // Save the workbook to disk as a real .xlsx file
+                // 4. Draw the thick black box around the WHOLE table
+                var fullTableRange = ws.Range(1, 1, row - 1, 2);
+                fullTableRange.Style.Border.OutsideBorder = XLBorderStyleValues.Medium;
+                fullTableRange.Style.Border.OutsideBorderColor = XLColor.Black;
+
+                //This creates a dark border around the Excel Collumns and Row borders
+                dataRange.Style.Border.InsideBorder = XLBorderStyleValues.Thin;
+                dataRange.Style.Border.InsideBorderColor = XLColor.LightGray;
+                dataRange.Style.Border.OutsideBorder = XLBorderStyleValues.Medium;
+                dataRange.Style.Border.OutsideBorderColor = XLColor.Black;
+
+                //Auto adjusts the collumns to match file name length
+                ws.Columns().AdjustToContents();
+                ws.Column(2).Width = 40;
+
+                // Align the index numbers to the left to create a gap before the title
+                ws.Column(1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
+                ws.Column(2).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+
+                //Saves file, will error if file is open
                 workbook.SaveAs(outputFile);
             }
 
-            // Console feedback so user knows it worked
             Console.WriteLine("Done. Excel file created: " + outputFile);
         }
     }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qLEFaH0VDZc=",
+  "dgSpecHash": "yLPrnAp7JLg=",
   "success": true,
-  "projectFilePath": "C:\\REPOS\\ClientFileIndexer\\FolderFileIndexer\\FolderFileIndexer.csproj",
+  "projectFilePath": "D:\\GithubCodingRepo\\ClientFileIndexer\\FolderFileIndexer\\FolderFileIndexer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tmonc\\.nuget\\packages\\closedxml\\0.105.0\\closedxml.0.105.0.nupkg.sha512",
     "C:\\Users\\tmonc\\.nuget\\packages\\closedxml.parser\\2.0.0\\closedxml.parser.2.0.0.nupkg.sha512",
