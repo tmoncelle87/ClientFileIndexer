@@ -23,7 +23,7 @@ namespace FolderFileIndexer
             //Paste the full path AND the desired file name (without the extension)
             string outputFile = @"\Path\To\Your\Folder\MyIndexName" + ".xlsx";
 
-            // Ensure the output directory exists
+            //Ensures the output directory exists
             string? outputDir = Path.GetDirectoryName(outputFile);
             if (!string.IsNullOrEmpty(outputDir))
             {
@@ -52,15 +52,15 @@ namespace FolderFileIndexer
 
             using (var workbook = new XLWorkbook())
             {
-                //Name the sheet "Files"
+                //Name the sheet "Indexed Files"
                 var ws = workbook.Worksheets.Add("Indexed Files");
 
-                //Headers
+                //Headers styling
                 ws.Cell(1, 1).Value = "Index";
                 ws.Cell(1, 2).Value = "File Name";
                 ws.ShowGridLines = false;
 
-                //Styles the Header Row a blue color
+                //Styles the Header Row a dark blue color
                 var headerRange = ws.Range(1, 1, 1, 2);
                 headerRange.Style.Font.Bold = true;
                 headerRange.Style.Fill.BackgroundColor = XLColor.LightBlue;
@@ -102,7 +102,7 @@ namespace FolderFileIndexer
                 ws.Columns().AdjustToContents();
                 ws.Column(2).Width = 40;
 
-                // Align the index numbers to the left to create a gap before the title
+                //Aligns the index numbers to the left to create a gap before the title
                 ws.Column(1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
                 ws.Column(2).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
 
