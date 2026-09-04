@@ -1,5 +1,4 @@
 ﻿using ClosedXML.Excel;     
-//using DocumentFormat.OpenXml.Drawing.Charts;
 using System;               
 using System.IO;           
 using System.Linq;          
@@ -11,8 +10,7 @@ namespace FolderFileIndexer
         public static void Main(string[] args)
         {
             //The folder containing the files we want to index
-            //string folderPath = @"Copy Folder Address Here";
-            string folderPath = @"D:\Documents";
+            string folderPath = @"Copy Folder Address Here";
 
             bool DeleteFileExtension = true;
 
@@ -23,8 +21,7 @@ namespace FolderFileIndexer
             }
 
             //Paste the full path AND the desired file name (without the extension)
-            //string outputFile = @"\Path\To\Your\Folder\MyIndexName" + ".xlsx";
-            string outputFile = @"D:\Documents\MyIndexName" + ".xlsx";
+            string outputFile = @"\Path\To\Your\Folder\MyIndexName" + ".xlsx";
 
             // Ensure the output directory exists
             string? outputDir = Path.GetDirectoryName(outputFile);
@@ -78,7 +75,7 @@ namespace FolderFileIndexer
                     {
                         ws.Cell(row, 2).Value = Path.GetFileName(filePath);
                     }
-                    else if(DeleteFileExtension == true)
+                    else
                     {
                         ws.Cell(row, 2).Value = Path.GetFileNameWithoutExtension(filePath);
                     }
@@ -90,7 +87,7 @@ namespace FolderFileIndexer
                 var dataRange = ws.Range(2, 1, row - 1, 2);
                 dataRange.Style.Fill.BackgroundColor = XLColor.AliceBlue;
 
-                // 4. Draw the thick black box around the WHOLE table
+                //Draws a black box around the table
                 var fullTableRange = ws.Range(1, 1, row - 1, 2);
                 fullTableRange.Style.Border.OutsideBorder = XLBorderStyleValues.Medium;
                 fullTableRange.Style.Border.OutsideBorderColor = XLColor.Black;
